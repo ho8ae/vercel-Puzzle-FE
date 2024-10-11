@@ -28,7 +28,6 @@ export type ActiveUserInfo = UserInfo & {
 };
 // Storage represents the shared document that persists in the Room
 type Storage = {
- 
   layers: LiveMap<string, LiveObject<Layer>>;
   layerIds: LiveList<string>;
   person: LiveObject<{
@@ -54,13 +53,12 @@ export type UserMeta = {
 // RoomEvent types
 
 export type RoomEvent =
-  | { type: "TOAST"; message: string }
-  | { type: "PLAY"; soundId: number }
-  | { type: "AUDIO_PLAY" }
-  | { type: "AUDIO_PAUSE" }
-  | { type: "START_TIMER"; time: number }
-  | { type: "STOP_TIMER" };
-
+  | { type: 'TOAST'; message: string }
+  | { type: 'PLAY'; soundId: number }
+  | { type: 'AUDIO_PLAY' }
+  | { type: 'AUDIO_PAUSE' }
+  | { type: 'START_TIMER'; time: number }
+  | { type: 'STOP_TIMER' };
 
 export const {
   suspense: {
@@ -89,4 +87,3 @@ export const {
     useMutation,
   },
 } = createRoomContext<Presence, Storage, UserMeta, RoomEvent>(client);
-

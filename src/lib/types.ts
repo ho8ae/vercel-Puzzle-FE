@@ -81,6 +81,7 @@ export type PathLayer = {
   width: number;
   fill: Color;
   points: number[][];
+  strokeWidth?: number; //추가
 };
 
 export type TextLayer = {
@@ -91,6 +92,7 @@ export type TextLayer = {
   width: number;
   fill: Color;
   value?: string;
+  isEditing?:boolean;
 };
 
 export type Point = {

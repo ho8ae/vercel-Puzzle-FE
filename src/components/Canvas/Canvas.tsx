@@ -73,7 +73,7 @@ const Canvas = () => {
   const layerIds = useStorage((root) => root.layerIds);
   const cursorPanel = useRef(null);
   const [currentStep, setCurrentStep] = useState(1); //프로젝트 1단계
-  const [penSize, setPenSize] = useState(16); //펜 사이즈 use
+  const [penSize, setPenSize] = useState(8); //펜 사이즈 use
   const pencilDraft = useSelf((me) => me.presence.pencilDraft);
   const [selectedLayerId, setSelectedLayerId] = useState<string | undefined>(); //text 컬러 상태관리
   const [canvasState, setState] = useState<CanvasState>({
@@ -522,6 +522,13 @@ const Canvas = () => {
   const onPointerMove = useMutation(
     ({ setMyPresence }, e: React.PointerEvent) => {
       e.preventDefault();
+      e.stopPropagation(); //브라우저 기본 드래그 동작
+
+      // 브라우저의 기본 드래그 방지
+      if (e.target instanceof HTMLElement || e.target instanceof SVGElement) {
+        e.target.style.userSelect = 'none';
+      }
+
       const current = pointerEventToCanvasPoint(e, camera);
       if (canvasState.mode === CanvasMode.Pressing) {
         startMultiSelection(current, canvasState.origin);

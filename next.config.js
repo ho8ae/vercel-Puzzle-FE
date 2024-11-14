@@ -10,10 +10,20 @@ const nextConfig = {
         hostname: 'liveblocks.io',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'aws-file-uploder.s3.ap-northeast-2.amazonaws.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        pathname: '/**',
+      },
     ],
-    domains: ['aws-file-uploder.s3.ap-northeast-2.amazonaws.com'], // S3 버킷 도메인 추가
   },
   webpack: (config, { isServer }) => {
+    config.cache = false;
     if (!isServer) {
       // Ensure that all imports of `yjs` resolve to the same instance
       config.resolve.alias['yjs'] = path.resolve(__dirname, 'node_modules/yjs');

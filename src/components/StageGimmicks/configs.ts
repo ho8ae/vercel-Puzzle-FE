@@ -1,3 +1,5 @@
+
+
 export interface StageGimmick {
   boxes: {
     id: string;
@@ -71,6 +73,19 @@ export const STAGE_GIMMICKS: { [key: number]: StageGimmick } = {
     title: '페르소나 정의하기',
     description: '우리 서비스의 주요 사용자 페르소나를 정의해봅시다',
   },
+  7: {
+    boxes: [
+      {
+        id: 'solving-problem-box',
+        type: 'solvingProblem',
+        color: { r: 59, g: 130, b: 246 },
+        position: { x: 150, y: 250 },
+      },
+    ],
+    title: '단계별 문제해결',
+    description: 'How를 통해 문제를 단계별로 해결해보세요',
+  },
+  
   8: {
     boxes: [
       {
@@ -110,3 +125,46 @@ export const getPersonaEmoji = (age: number, gender: string) => {
   }
   return '🧑';
 };
+
+
+export const BOX_CONFIG = {
+  define: {
+    title: 'How Bad?',
+    description: '현재 상황을 정의해주세요',
+    icon: '❓',
+    color: 'bg-blue-50 border-blue-200 text-blue-600',
+    maxCount: 5,
+    minLength: 20,
+    guideQuestions: [
+      '어떤 문제가 있나요?',
+      '문제의 심각성은 어느 정도인가요?',
+      '누구에게 영향을 미치나요?'
+    ]
+  },
+  analyze: {
+    title: 'How Come?',
+    description: '원인을 분석해주세요',
+    icon: '🔍',
+    color: 'bg-amber-50 border-amber-200 text-amber-600',
+    maxCount: 3,
+    minLength: 30,
+    guideQuestions: [
+      '왜 이 문제가 발생했나요?',
+      '어떤 요인들이 영향을 미쳤나요?',
+      '근본적인 원인은 무엇인가요?'
+    ]
+  },
+  solve: {
+    title: 'How To?',
+    description: '해결 방안을 제시해주세요',
+    icon: '💡',
+    color: 'bg-green-50 border-green-200 text-green-600',
+    maxCount: 1,
+    minLength: 40,
+    guideQuestions: [
+      '어떻게 해결할 수 있을까요?',
+      '필요한 자원은 무엇인가요?',
+      '실현 가능한 방법은 무엇인가요?'
+    ]
+  }
+} as const;

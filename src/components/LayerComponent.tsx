@@ -13,6 +13,7 @@ import Story from './Story';
 import Spread from './Spread';
 import Discussion from './Discussion';
 import Persona from './Persona';
+import SolvingProblem from './SolvingProblem';
 
 type Props = {
   id: string;
@@ -114,7 +115,7 @@ const LayerComponent = memo(
             selectionColor={selectionColor}
           />
         );
-        case LayerType.Discussion:
+      case LayerType.Discussion:
         return (
           <Discussion
             id={id}
@@ -123,7 +124,7 @@ const LayerComponent = memo(
             selectionColor={selectionColor}
           />
         );
-        case LayerType.Persona:
+      case LayerType.Persona:
         return (
           <Persona
             id={id}
@@ -132,6 +133,16 @@ const LayerComponent = memo(
             selectionColor={selectionColor}
           />
         );
+      case LayerType.SolvingProblem:
+        return (
+          <SolvingProblem
+            id={id}
+            layer={layer}
+            onPointerDown={onLayerPointerDown}
+            selectionColor={selectionColor}
+          />
+        );
+
       case LayerType.UserStory:
         return (
           <Story

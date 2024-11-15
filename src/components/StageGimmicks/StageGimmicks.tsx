@@ -5,6 +5,7 @@ import {
   SparedBoxTemplate,
   DiscussionBoxTemplate,
   PersonaBoxTemplate,
+  ProblemSolvingBoxTemplate
 } from '.';
 import { STAGE_GIMMICKS } from './configs';
 import { motion } from 'framer-motion';
@@ -23,6 +24,7 @@ export default function StageGimmicks({ currentStep }: StageGimmicksProps) {
     4: SparedBoxTemplate,
     5: DiscussionBoxTemplate,
     6: PersonaBoxTemplate,
+    7: ProblemSolvingBoxTemplate,
     8: UserStoryTemplate,
   }[currentStep];
 

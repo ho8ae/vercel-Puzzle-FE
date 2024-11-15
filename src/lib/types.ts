@@ -46,6 +46,7 @@ export enum LayerType {
   Spread, // 4단계 Spread 추가
   Discussion, // 5단계 토론하기
   Persona, // 6단계  Persona
+  SolvingProblem, //7단계 문제해결
   UserStory, //8단계
 }
 
@@ -65,6 +66,7 @@ export type Layer =
   | SpreadLayer
   | DiscussionLayer
   | PersonaLayer
+  | SolvingProblemLayer
   | UserStoryLayer;
 
 export type RectangleLayer = {
@@ -253,9 +255,31 @@ export type PersonaLayer = {
   occupation: string;
   quote: string;
   emoji?: string; // 이모지는 선택적으로 설정
-  traits: Array<{ category: 'traits' | 'goals' | 'pain' | 'behavior'; value: string }>;
+  traits: Array<{
+    category: 'traits' | 'goals' | 'pain' | 'behavior';
+    value: string;
+  }>;
   borderColor: Color;
   fontStyle: string;
+  creator: {
+    id: string;
+    name: string;
+    avatar?: string;
+  };
+};
+
+
+export type SolvingProblemLayer = {
+  type: LayerType.SolvingProblem;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  fill: Color;
+  boxType: 'define' | 'analyze' | 'solve';
+  content: string;
+  isLocked: boolean;
+  dependencies?: string[]; // 이전 박스들과의 연결 관계
   creator: {
     id: string;
     name: string;
